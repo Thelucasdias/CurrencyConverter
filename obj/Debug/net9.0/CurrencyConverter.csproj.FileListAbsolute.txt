@@ -37,3 +37,6 @@
 /home/lucas/Projetos/currencyConverter/CurrencyConverter/obj/Debug/net9.0/CurrencyConverter.pdb
 /home/lucas/Projetos/currencyConverter/CurrencyConverter/obj/Debug/net9.0/CurrencyConverter.genruntimeconfig.cache
 /home/lucas/Projetos/currencyConverter/CurrencyConverter/obj/Debug/net9.0/ref/CurrencyConverter.dll
+/home/lucas/Projetos/currencyConverter/CurrencyConverter/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/lucas/Projetos/currencyConverter/CurrencyConverter/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/lucas/Projetos/currencyConverter/CurrencyConverter/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll

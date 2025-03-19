@@ -4,19 +4,23 @@ using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuração para ler variáveis de ambiente e appsettings.json
 builder.Configuration.AddEnvironmentVariables();
 
-// Registrar serviços
 builder.Services.AddControllers();
 builder.Services.AddHttpClient<CurrencyConverter.Services.CurrencyService>();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
-// Configuração do pipeline de requisições HTTP
+
+
+
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseRouting();
