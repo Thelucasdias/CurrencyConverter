@@ -14,6 +14,22 @@ namespace CurrencyConverter.Controllers
             _currencyService = currencyService;
         }
 
+        
+        [HttpGet("currencies")]
+        public async Task<IActionResult> GetCurrencies()
+        {
+            try
+            {
+                var currencies = await _currencyService.GetCurrencies();
+                return Ok(currencies);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        
         [HttpGet("convert")]
         public async Task<IActionResult> Convert(string from, string to, decimal amount)
         {
