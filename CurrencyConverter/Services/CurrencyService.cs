@@ -1,5 +1,8 @@
 using Newtonsoft.Json;
-
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace CurrencyConverter.Services
 {
@@ -14,7 +17,8 @@ namespace CurrencyConverter.Services
             _apiKey = configuration["FreeCurrencyApi:ApiKey"]
                   ?? throw new ArgumentNullException(nameof(configuration), "Chave de API não encontrada.");
         }
-         public async Task<List<string>> GetCurrencies()
+
+        public async Task<List<string>> GetCurrencies()
         {
             var url = $"https://api.freecurrencyapi.com/v1/currencies?apikey={_apiKey}";
 
@@ -30,11 +34,12 @@ namespace CurrencyConverter.Services
             }
 
             var currencies = currenciesResponse.Data.Keys.ToList();
-            return currencies;}
+            return currencies;
+        }
 
         public async Task<decimal> ConvertCurrency(string from, string to, decimal amount)
         {
-            var url = $"https://api.freecurrencyapi.com/v1/latest?base_currency={from}";
+            var url = $"https://api.freecurrencyapi.com/v1/latest?apikey={_apiKey}&base_currency={from}";
 
             var response = await _httpClient.GetAsync(url);
             if (!response.IsSuccessStatusCode)
@@ -53,27 +58,25 @@ namespace CurrencyConverter.Services
             throw new Exception("Moeda de destino não encontrada ou resposta inválida da API.");
         }
 
-            public class CurrencyConversionResponse
+        public class CurrencyConversionResponse
         {
             public Dictionary<string, decimal> Data { get; set; } = new Dictionary<string, decimal>();
         }
 
-    
         public class FreeCurrencyApiResponse
-    {
-        public required Dictionary<string, decimal> Data { get; set; }
-    }
-    public class CurrencyInfo
-    {
-        public required string Name { get; set; }
-        public required string Symbol { get; set; }
-    }
+        {
+            public required Dictionary<string, decimal> Data { get; set; }
+        }
 
-    internal class CurrencyListResponse
-    {
-        public required Dictionary<string, CurrencyInfo> Data { get; set; }
+        public class CurrencyInfo
+        {
+            public required string Name { get; set; }
+            public required string Symbol { get; set; }
+        }
+
+        internal class CurrencyListResponse
+        {
+            public required Dictionary<string, CurrencyInfo> Data { get; set; }
+        }
     }
 }
-}
-
-    
