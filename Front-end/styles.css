@@ -7,11 +7,27 @@
 body {
   font-family: Arial, sans-serif;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  height: 70vh;
+  height: 100vh;
   margin: 0;
   background-color: black;
+  gap: 40px;
+  overflow: hidden;
+}
+
+.info-marquee-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.info-marquee-wrapper {
+  display: flex;
+  width: max-content;
+  animation: scroll 15s linear infinite;
 }
 
 .container {
@@ -21,6 +37,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 300px;
   text-align: center;
+  margin-top: 50px;
 }
 
 h1 {
@@ -74,4 +91,71 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.financial-ticker {
+  width: 100%;
+  background-color: #1e1e1e;
+  padding: 12px 0;
+  overflow: hidden;
+  white-space: nowrap; /* Impede quebra de linha */
+}
+
+.ticker-container {
+  display: flex;
+  padding: 0 10px;
+  animation: scroll 30s linear infinite;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 15px;
+}
+
+.ticker-item:not(:last-child)::after {
+  content: "|";
+  position: absolute;
+  right: 0;
+  color: #555;
+}
+
+.ticker-name,
+.ticker-value,
+.ticker-variation {
+  white-space: nowrap;
+  padding: 0 3px;
+}
+
+.ticker-name {
+  font-weight: bold;
+  color: #a1a1a1;
+}
+
+.ticker-value {
+  font-weight: bold;
+  color: #aca6fd;
+}
+
+.ticker-variation {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.positivo {
+  color: #4caf50;
+}
+.negativo {
+  color: #f44336;
+}
+
+/* Animação de scroll contínuo */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
