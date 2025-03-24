@@ -43,7 +43,9 @@ async function convertCurrency(event) {
     }
 
     const result = await response.text();
-    document.getElementById("result").innerText = `$${result}`;
+    document.getElementById(
+      "result"
+    ).innerText = `$${amount} ${from} = $${result}${to}`;
   } catch (error) {
     document.getElementById("result").innerText = `Erro: ${error.message}`;
   }
