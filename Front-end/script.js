@@ -45,7 +45,7 @@ async function convertCurrency(event) {
     const result = await response.text();
     document.getElementById(
       "result"
-    ).innerText = `$${amount} ${from} = $${result}${to}`;
+    ).innerText = `$${amount} ${from} = $${result} ${to}`;
   } catch (error) {
     document.getElementById("result").innerText = `Erro: ${error.message}`;
   }
@@ -57,7 +57,6 @@ document
   .getElementById("converterForm")
   .addEventListener("submit", convertCurrency);
 
-// Função para buscar dados da API
 async function fetchMarketData() {
   try {
     const response = await fetch(
@@ -75,10 +74,9 @@ async function fetchMarketData() {
   }
 }
 
-// Função para renderizar os itens (sem bandeiras)
 function renderTickerItems(data) {
   const container = document.querySelector(".ticker-container");
-  container.innerHTML = ""; // Limpa o container
+  container.innerHTML = "";
 
   data.forEach((item) => {
     const itemElement = document.createElement("div");
@@ -94,9 +92,7 @@ function renderTickerItems(data) {
   });
 }
 
-// Função principal
 async function initTicker() {
-  // Mostra loading
   document.querySelector(".ticker-container").innerHTML =
     '<div class="ticker-item">Carregando...</div>';
 
@@ -105,16 +101,14 @@ async function initTicker() {
   if (marketData && marketData.length) {
     renderTickerItems(marketData);
 
-    // Atualiza a cada 1 minuto
     setInterval(async () => {
       const freshData = await fetchMarketData();
       if (freshData) renderTickerItems(freshData);
-    }, 60000);
+    }, 30000);
   } else {
     document.querySelector(".ticker-container").innerHTML =
       '<div class="ticker-item">Erro ao carregar dados. Atualize a página.</div>';
   }
 }
 
-// Inicia quando o DOM estiver pronto
 document.addEventListener("DOMContentLoaded", initTicker);

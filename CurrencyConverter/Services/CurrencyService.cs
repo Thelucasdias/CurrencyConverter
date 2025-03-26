@@ -1,8 +1,4 @@
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 
 namespace CurrencyConverter.Services
 {
@@ -58,11 +54,7 @@ namespace CurrencyConverter.Services
             throw new Exception("Moeda de destino não encontrada ou resposta inválida da API.");
         }
 
-        public class CurrencyConversionResponse
-        {
-            public Dictionary<string, decimal> Data { get; set; } = new Dictionary<string, decimal>();
-        }
-
+        
         public class FreeCurrencyApiResponse
         {
             public required Dictionary<string, decimal> Data { get; set; }

@@ -9,10 +9,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
   margin: 0;
-  background-color: black;
+  background-color: #ebebeb;
   gap: 40px;
   overflow: hidden;
 }
@@ -31,13 +31,12 @@ body {
 }
 
 .container {
-  background-color: rgb(170, 170, 170);
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  width: 250px;
   text-align: center;
-  margin-top: 50px;
+  margin: 30px 0px 0px 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
 }
 
 h1 {
@@ -62,16 +61,17 @@ input {
   margin-bottom: 15px;
   padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 15px;
   font-size: 14px;
 }
 
 button {
   padding: 10px;
   background-color: #28a745;
+  margin-top: 10px;
   color: black;
   border: none;
-  border-radius: 4px;
+  border-radius: 15px;
   font-size: 16px;
   cursor: pointer;
 }
@@ -98,7 +98,7 @@ input[type="number"]::-webkit-inner-spin-button {
   background-color: #1e1e1e;
   padding: 12px 0;
   overflow: hidden;
-  white-space: nowrap; /* Impede quebra de linha */
+  white-space: nowrap;
 }
 
 .ticker-container {
@@ -141,6 +141,8 @@ input[type="number"]::-webkit-inner-spin-button {
 .ticker-variation {
   font-weight: bold;
   margin-right: 5px;
+  display: inline-flex;
+  align-items: baseline;
 }
 
 .positivo {
