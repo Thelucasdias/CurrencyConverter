@@ -9,12 +9,48 @@
   <body>
     <div class="financial-ticker">
       <div class="ticker-container">
-
-      </div>
-    
+      </div>     
   </div>
-      </div>
-       <div class="container">
+
+  <div class="app-container">
+    <header class="app-header">
+        <h1><i class="fas fa-chart-line"></i> Notícias Financeiras</h1>
+        <div class="controls">
+            <select id="category-filter" class="filter-select">
+                <option value="all">Todas Categorias</option>
+                <option value="business">Negócios</option>
+                <option value="politics">Política</option>
+                <option value="world">Mundo</option>
+            </select>
+            <button id="refresh-btn" class="refresh-btn">
+                <i class="fas fa-sync-alt"></i> Atualizar
+            </button>
+        </div>
+    </header>
+
+    <main class="news-container">
+        <div id="loading-indicator" class="loading">
+            <div class="spinner"></div>
+            <p>Carregando notícias...</p>
+        </div>
+        
+        <div id="news-grid" class="news-grid">
+            
+        </div>
+        
+        <div id="error-message" class="error-message hidden">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>Não foi possível carregar as notícias. Tente novamente mais tarde.</p>
+            <button id="retry-btn" class="retry-btn">Tentar Novamente</button>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p>Atualizado em: <span id="last-updated">--/--/---- --:--</span></p>
+        <p>Dados fornecidos por NewsData.io</p>
+    </footer>
+</div>
+   <div class="container">
       <h1>Conversor de moedas</h1>
       <form id="converterForm">
         <label for="from">De:</label>
@@ -29,11 +65,10 @@
             
             <button type="submit">Converter</button>
         </form>
-        
-
 
         <div id="result" class="result">
     </div>
+    
     <script src="script.js"></script>
   </body>
 </html>

@@ -1,7 +1,12 @@
 using CurrencyConverter.Services;
+using CurrencyConverter.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddHttpClient<INewsService, NewsService>();
+builder.Services.Configure<NewsApiSettings>(builder.Configuration.GetSection("NewsDataApi"));
+builder.Services.AddScoped<INewsService, NewsService>();
 
 builder.Configuration.AddEnvironmentVariables();
 
@@ -13,7 +18,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins",
+    options.AddPolicy("AllowAll",
         builder =>
         {
             builder.AllowAnyOrigin()
@@ -24,7 +29,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-app.UseCors("AllowAllOrigins");
+app.UseCors("AllowAll");
 
 
 
@@ -35,3 +40,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public class NewsApiSettings
+{
+}
